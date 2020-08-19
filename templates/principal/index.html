@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %} <!-- para ler arquivos staticos -->
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Catálogos Voltan</title>
+        <link href="{% static 'css/principal.css' %}" rel="stylesheet" type="text/css"> <!-- referencia o principal.css -->
+        <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css"> <!-- referencia o menu.css -->
+    </head>
+
+    <body>
+        {% include "../menu.html" %}
+        <main>
+             <h1 class="Titulo">Catálogo de Filmes Voltan</h1>
+        </main>
+    </body>
+</html>

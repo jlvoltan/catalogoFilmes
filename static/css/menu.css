@@ -1,0 +1,28 @@
+ul{
+    list-style-type: none;
+    margin: 2px;
+    padding: 2px;
+    overflow: hidden;
+    background-color: lightskyblue;
+}
+
+li{
+    float: left;
+}
+
+a{
+    display: block;
+    color: azure;
+    text-align: center;
+    padding: 15px 17px;
+    font-family: "Roboto Light";
+    text-decoration: aliceblue;
+    font-size: large;
+}
+
+a:hover{  /* Serve para o elemento em que o mouse está em cima*/
+    font-size: larger; /* fica com fonte um pouco mnaior */
+    font-weight: bolder;/* fica em negrito*/
+    background:#7AA3CC ;/* fica com o azul um pouco mais escuro*/
+}
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{%  load static %}
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+         <title>Catalogo de Filmes Voltan</title>
+        <link href="{% static 'css/crud.css' %}" rel="stylesheet" type="text/css"> <!-- referencia o crud.css -->
+        <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css"> <!-- referencia o menu.css -->
+    </head>
+    <body>
+        {% include "../menu.html" %}
+
+    <main>
+         <div class="conteiner">
+             <div>
+                 {% if generos_registro %} <!-- Verifica se existe algo a exibir -->
+                     <table>
+                        <thead>
+                            <tr>
+                                <th>Gênero</th>
+                                <th>Clique Alterar</th>
+                                <th>Clique Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         {% for genero in generos_registro %}
+                         <tr>
+                             <td>{{ genero.descricao }}</td>
+                             <td><button class="list-button editar" onclick="updateItem({{genero.id}})">Alterar</button></td>
+                             <td><button class="list-button apagar" onclick="deleteItem({{genero.id}})">Excluir</button></td>
+                         </tr>
+                            {% endfor %}
+                        </tbody>
+                     </table>
+                 {% else %}
+                    <p>Ainda não há dados cadastrados.</p>
+                 {% endif %}
+             </div>
+             <div class="divFormulario">
+                <form onsubmit="/genero" id="formulario-genero" method="post">
+                    {{form}}
+                    {% csrf_token %}
+                     <input type= "submit" id="botao-enviar" class="botao-enviar" value="Enviar"/>
+                </form>
+             </div>
+         </div>
+    </main>
+
+    <script>
+        function deleteItem(id) {
+            /*Consulta o token gerado na navegação e salva*/
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            const request = new Request(
+                "/genero/delete/" + id,
+                {headers:{'X-CSRFToken':csrfToken}}
+            )
+            fetch(request,{
+                method:'DELETE',
+                mode: 'same-origin'
+            }).then(
+                    function (response) {
+                        if(response.status===500){
+                            alert("Exclusão não realizada.");
+                        }else{ /*Pra voltar pra página anterior*/
+                            location.replace("/genero")
+                        }
+                    }
+            )
+        }
+
+        function updateItem(id){
+            location.replace('/genero/update/'+id);
+        }
+    </script>
+    </body>
+</html>

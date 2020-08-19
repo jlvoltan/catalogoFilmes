@@ -1,0 +1,62 @@
+form{
+    margin: 32px;
+}
+form label{
+    display:inline;
+    text-align: center;
+    font-size: 1.4em;
+    padding: 1em;
+    font-family: "Roboto Light";
+    text-decoration: aliceblue;
+    font-size: 1em;
+}
+.botao-enviar{
+    background: lightskyblue;
+    color: white;
+    border: aqua;
+    border-radius: 7px;
+}
+.botao-enviar:hover{  /* Serve para o elemento em que o mouse está em cima*/
+    font-size: 2ex; /* fica com fonte um pouco mnaior */
+    font-weight: bolder;/* fica em negrito*/
+    background:#7AA3CC ;/* fica com o azul um pouco mais escuro*/
+}
+.conteiner{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+.divFormulario{
+    background-color: aliceblue;
+}
+
+table{     /*VISUAL DA TABELA*/
+    margin: 30px;
+    text-align: center;
+}
+thead{
+    background: lightskyblue;
+    color: white;
+    font-weight: bold;
+    font-family: "Roboto Light";
+}
+tbody{
+    font-family: "Roboto Light";
+    background: aliceblue;
+}
+td, th{
+    border: 1px solid black;
+    padding: 9px 18px;
+}
+.list-button{ /*VISUAL DO BOTÃO*/
+    border: aqua;
+    border-radius: 7px;
+    padding: 2px 10px;
+}
+.list-button:hover{  /* Serve para o elemento em que o mouse está em cima*/
+    font-size: 2ex; /* fica com fonte um pouco maior */
+    font-weight: bolder;/* fica em negrito*/
+}
+.editar{background: lightgrey}
+.apagar{background: darksalmon}
