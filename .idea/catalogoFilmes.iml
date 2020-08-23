@@ -16,6 +16,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/catalogoFilmes" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/genero" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/serie" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="uf-8">
+    <title>Catalogo de Filmes Voltan</title>
+    <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/crud.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% include "../menu.html" %}
+<main>
+    <div class="conteiner">
+        <div>
+            {% if serie_registro %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Série</th>
+                        <th>Gênero da Série</th>
+                        <th>Alterar</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for serie in serie_registro %}
+                    <tr>
+                        <td>{{serie.nome}}</td>
+                        <td>{{serie.serieGenero}}</td>
+                        <td><button class="list-button editar" onclick="updateItem({{serie.id}})">Alterar</button></td>
+                        <td><button class="list-button apagar" onclick="deleteItem({{serie.id}})">Excluir</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <p>Ainda não há dados cadastrados por aqui.</p>
+                <p>Faça uma inserção</p>
+            {% endif %}
+        </div>
+        <div class="divFormulario">
+            <form onsubmit="/serie" id="formulario-serie" method="post">
+                {{form}}
+                {% csrf_token %}
+                <input type="submit" id="botao-enviar" value="Enviar" class="botao-enviar">
+            </form>
+        </div>
+    </div>
+</main>
+
+<script>
+    function deleteItem(id) {
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        const request = new Request(
+        "/serie/delete/"+id,
+        {headers: {'X-CSRFToken': csrftoken}}
+        );
+        fetch(request, {
+            method: 'DELETE',
+            mode: 'same-origin'
+        }).then(
+            function (response) {
+                if(response.status===500){
+                            alert("Exclusão não realizada.");
+                }else{ /*Pra voltar pra página anterior*/
+                            location.replace("/serie")
+                }
+            })
+    }
+
+    function updateItem(id) {
+        location.replace("/serie/update/"+id)
+    }
+</script>
+</body>
+</html>

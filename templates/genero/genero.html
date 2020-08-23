@@ -53,9 +53,9 @@
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
             const request = new Request(
-                "/genero/delete/" + id,
-                {headers:{'X-CSRFToken':csrfToken}}
-            )
+             "/genero/delete/" + id,
+             {headers:{'X-CSRFToken':csrfToken}}
+            );
             fetch(request,{
                 method:'DELETE',
                 mode: 'same-origin'

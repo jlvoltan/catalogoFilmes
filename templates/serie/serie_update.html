@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{%  load static %}
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catalogo de Filmes Voltan</title>
+    <link href="{% static 'css/crud.css' %}" rel="stylesheet" type="text/css"> <!-- referencia o crud.css -->
+    <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css"> <!-- referencia o menu.css -->
+    </head>
+<body>
+     {% include "../menu.html" %}
+    <main>
+        <div class="conteiner">
+            <div>
+                <form onsubmit= "/serie" id="formulario-serie" method="post">
+                     {{ form }}
+                    {% csrf_token %}
+                    <input type="submit" id="botao-enviar" class="botao-enviar" value="Alterar"/>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
